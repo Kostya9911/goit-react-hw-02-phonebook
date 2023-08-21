@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const ContactItem = ({ onDelete, name, number }) => {
   return (
     <div>
@@ -9,4 +11,11 @@ export const ContactItem = ({ onDelete, name, number }) => {
       </button>
     </div>
   );
+};
+
+ContactItem.propTypes = {
+  onDelete: PropTypes.func,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  number: PropTypes.string,
 };

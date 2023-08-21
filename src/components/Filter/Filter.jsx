@@ -1,8 +1,15 @@
-export const Filter = ({ value, onCnange }) => {
+import PropTypes from 'prop-types';
+
+export const Filter = ({ value, onChange }) => {
   return (
     <label htmlFor="filter">
       Find contact by name
-      <input type="text" name="filter" value={value} onChange={onCnange} />
+      <input type="text" name="filter" value={value} onChange={onChange} />
     </label>
   );
+};
+
+Filter.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
 };
