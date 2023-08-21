@@ -6,18 +6,18 @@ export class ContactForm extends Component {
     number: '',
   };
 
-  handleSubmit = evt => {
-    evt.preventDefault();
-    const { name, number } = evt.target.elements;
+  handleSubmit = e => {
+    e.preventDefault();
+    const { name, number } = e.target.elements;
 
     if (this.props.contacts.find(contact => contact.name === name.value)) {
       alert(`${name.value} is already in contacts!`);
-      evt.currentTarget.reset();
+      e.currentTarget.reset();
       return;
     }
 
     this.props.onSubmit(name.value, number.value);
-    evt.currentTarget.reset();
+    e.currentTarget.reset();
   };
 
   render() {
