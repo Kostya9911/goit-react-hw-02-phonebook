@@ -16,7 +16,7 @@ export class ContactForm extends Component {
     );
 
     if (isExist) {
-      alert(`${name} is already in contacts!`);
+      alert(`${name.value} is already in contacts!`);
       evt.currentTarget.reset();
       return;
     }
