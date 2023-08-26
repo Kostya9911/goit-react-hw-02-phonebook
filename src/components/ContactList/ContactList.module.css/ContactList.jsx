@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import { ContactItem } from 'components/ContactItem/ContactItem';
+import css from './ContactList.module.css';
 
 export const ContactList = ({ onDelete, contacts }) => {
   return (
-    <ul>
+    <ol>
       {contacts.map(({ id, name, number }) => {
         return (
           <li key={id}>
@@ -17,14 +18,14 @@ export const ContactList = ({ onDelete, contacts }) => {
           </li>
         );
       })}
-    </ul>
+    </ol>
   );
 };
 
 ContactList.propTypes = {
   onDelete: PropTypes.func,
   contacts: PropTypes.arrayOf(
-    PropTypes.share({
+    PropTypes.shape({
       id: PropTypes.string,
       name: PropTypes.string,
       number: PropTypes.string,
