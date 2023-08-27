@@ -7,21 +7,14 @@ export class ContactForm extends Component {
     number: '',
   };
 
+  handleChange = evt => {
+    this.setState({ [evt.currentTarget.name]: evt.currentTarget.value });
+  };
+
   handleSubmit = evt => {
     evt.preventDefault();
-    const { name, number } = evt.target.elements;
 
-    const isExist = this.props.contacts.find(
-      contact => contact.name === name.value
-    );
-
-    if (isExist) {
-      alert(`${name.value} is already in contacts!`);
-      evt.currentTarget.reset();
-      return;
-    }
-
-    this.props.onSubmit(name.value, number.value);
+    this.props.onSubmit(this.state);
     evt.currentTarget.reset();
   };
 
@@ -31,6 +24,7 @@ export class ContactForm extends Component {
         <label>
           Name
           <input
+            onChange={this.handleChange}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -42,6 +36,7 @@ export class ContactForm extends Component {
         <label>
           Number
           <input
+            onChange={this.handleChange}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
